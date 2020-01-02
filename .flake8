@@ -1,0 +1,11 @@
+[flake8]
+ignore = E226,E302,E41
+max-line-length = 120
+max-complexity = 10
+exclude = db.sqlite3,Pipfile,Pipfile.lock,requirements.txt,tests/*
+
+[pep8]
+max_line_length = 120
+ignore = E501,E226,E302,E41
+max-complexity = 10
+exclude = db.sqlite3,Pipfile,Pipfile.lock,tests/*
