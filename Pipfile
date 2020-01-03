@@ -10,6 +10,8 @@ Django = "~=2.2.4"
 pycodestyle = "*"
 autopep8 = "*"
 flake8 = "*"
+djangorestframework = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.6"

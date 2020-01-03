@@ -1,10 +1,15 @@
-from django.urls import path
-from . import views
+from django.conf.urls import include, url
+from rest_framework.routers import DefaultRouter
+from blog import views
 
+# Create a router and register our viewsets with it.
+router = DefaultRouter()
+router.register(r'posts', views.PostViewSet)
+router.register(r'users', views.UserViewSet)
+
+
+# The API URLs are now determined automatically by the router.
+# Additionally, we include the login URLs for the browsable API.
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
-    path('post/<int:pk>/', views.post_detail, name='post_detail'),
-    path('post/new/', views.post_new, name='post_new'),
-    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
-    path('post/<int:pk>/delete/', views.post_delete, name='post_delete'),
+    url(r'^', include(router.urls)),
 ]
