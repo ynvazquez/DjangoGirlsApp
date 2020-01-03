@@ -3,6 +3,7 @@ from blog.models import Post
 from rest_framework import viewsets
 from blog.serializers import PostSerializer, UserSerializer
 from django.contrib.auth.models import User
+from rest_framework import permissions
 
 class PostViewSet(viewsets.ModelViewSet):
     """
@@ -10,6 +11,7 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     queryset = Post.objects.all().order_by('published_date')
     serializer_class = PostSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
